@@ -1,0 +1,23 @@
+{
+    "id": "fire",
+    "tiles": {
+        "width": 20,
+        "height": 20
+    },
+    "colors": {
+        "r": {
+            "initial": 0,
+            "multiplier": 255
+        },
+        "g": {
+            "initial": 0,
+            "multiplier": 255
+        },
+        "b": {
+            "initial": 0,
+            "multiplier": 255
+        }
+    },
+    "noiseResolution": 500,
+    "speed": 3000
+}

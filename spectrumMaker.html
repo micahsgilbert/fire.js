@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>fire.js demo</title>
+        <script>
+            var options = {}
+
+            const types = ["initial", "multiplier"]
+            const colors = ["r", "g", "b"]
+
+            window.onload = () => {
+                for (var c = 0; c < colors.length; c++) {
+                    for (var t = 0; t < types.length; t++) {
+                        const color = colors[c]
+                        const type = types[t]
+                        var row = document.getElementById("customizer").insertRow()
+                        var cell1 = row.insertCell()
+                        var cell2 = row.insertCell()
+                        var cell3 = row.insertCell()
+                        cell1.innerHTML = `<p>${color} ${type}</p>`
+                        cell2.innerHTML = `<input type='range' min=0 max=255 class='slider' value=127 id="${color}${type}input" oninput='reload()'></p>`
+                        cell3.innerHTML = `<span id=${color}${type}display>127</span>`
+                    }
+                }
+                reload()
+            }
+            function reload() {
+                for (var c = 0; c < colors.length; c++) {
+                    for (var t = 0; t < types.length; t++) {
+                        const color = colors[c]
+                        const type = types[t]
+                        const value = document.getElementById(`${color}${type}input`).value
+                        document.getElementById(`${color}${type}display`).innerHTML = value
+                        options[`${color}${type}display`] = value
+                    }
+                }
+                const canvas = document.getElementById("main")
+                const ctx = canvas.getContext('2d')
+                for (var i = 0; i < 1; i += 0.01) {
+                    ctx.fillStyle = getColor(i)
+                    ctx.fillRect(i*400, 0, 4, 400)
+                }
+            }
+            function getColor(i) {
+                const r = Math.min(Number(options.rinitialdisplay) + Number(options.rmultiplierdisplay) * i, 255)
+                const g = Math.min(Number(options.ginitialdisplay) + Number(options.gmultiplierdisplay) * i, 255)
+                const b = Math.min(Number(options.binitialdisplay) + Number(options.bmultiplierdisplay) * i, 255)
+                return "#" + RGBtoHex(r) + RGBtoHex(g) + RGBtoHex(b)
+            }
+            function RGBtoHex(rgb) { 
+                var hex = Number(rgb).toString(16).substr(0, 2);
+                if (hex.length < 2) {
+                    hex = "0" + hex;
+                }
+                return hex;
+            }
+        </script>
+    </head>
+    <body style="margin: 0">
+        <canvas id="main" width=400 height=400></canvas>
+        <table id="customizer"></table>
+    </body>
+</html>
