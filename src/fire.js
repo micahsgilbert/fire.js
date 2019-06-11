@@ -5,6 +5,7 @@ export var config
 var tiles = []
 
 var canvas
+var parentDiv
 var ctx
 
 var configReadyCallback = () => {}
@@ -18,6 +19,22 @@ window.onload = (() => {
         }
     }
 })()
+
+window.onresize = (() => {
+    let cached_resize = window.onresize
+    return () => {
+        handleSizeChange()
+        if (cached_resize != null) {
+            cached_resize.apply(this, arguments)
+        }
+    }
+})()
+
+export function handleSizeChange() {
+    canvas.width = parentDiv.clientWidth
+    canvas.height = parentDiv.clientHeight
+    updateDimensions()
+}
 
 export function updateDimensions() {
     tiles = []
@@ -79,7 +96,10 @@ export function onConfigReady(fn) {
 function init() {
     noise.seed(Math.random())
     fetchConfig(() => {
-        canvas = document.getElementById(config.id)
+        canvas = document.createElement("canvas")
+        parentDiv = document.getElementById(config.id)
+        parentDiv.appendChild(canvas)
+        handleSizeChange()
         ctx = canvas.getContext('2d')
         updateDimensions()
         setInterval(main, 10)

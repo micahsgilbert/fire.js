@@ -4,21 +4,37 @@
         <script src="fire.js"></script>
         <style>
             body {
-                font-family: sans-serif
+                font-family: sans-serif;
+                height: 100%:
+                overflow: hidden;
+                color: white
             }
             input {
                 width: 250px
             }
-            div {
-                display: inline-block
+            button {
+                margin: 2px;
+            }
+            td {
+                margin: 4px;
+                padding: 0;
+            }
+            #fire {
+                width: 100%;
+                height: 100%;
+            }
+            #customizer-div {
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-color: rgba(0, 0, 0, 0.5);
             }
         </style>
     </head>
     <body style="margin: 0">
-        <div>
-            <canvas id="fire" width=400 height=400></canvas>
+        <div id="fire">
         </div>
-        <div>
+        <div id="customizer-div">
             <table id="customizer">
                 <tr><td>Tile Width</td><td><input type="range" min="1" max="400" value="20" class="slider" id="tileWidth"></td><td><input value="20" type="text" class="textInput" id="tileWidth-display"></input></td></tr>
                 <tr><td>Tile Height</td><td><input type="range" min="1" max="400" value="20" class="slider" id="tileHeight"></td><td><input value="20" type="text" class="textInput" id="tileHeight-display"></input></td></tr>
@@ -31,9 +47,7 @@
                 <tr><td>Blue Initial</td><td><input type="range" min="0" max="255" value="0" class="slider" id="bi"></td><td><input value="0" type="text" class="textInput" id="bi-display"></input></td></tr>
                 <tr><td>Blue Multiplier</td><td><input type="range" min="0" max="255" value="255" class="slider" id="bm"></td><td><input value="255" type="text" class="textInput" id="bm-display"></input></td></tr>
             </table>
+            <button id="download">Download JSON</button>
         </div>
-        <br>
-        <br>
-        <button id="download">Download JSON</button>
     </body>
 </html>
