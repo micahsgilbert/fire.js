@@ -102,14 +102,15 @@ function init() {
         handleSizeChange()
         ctx = canvas.getContext('2d')
         updateDimensions()
-        setInterval(main, 10)
+        animate()
     })
 }
 
-function main() {
+var animate = () => {
     for (let x = 0; x < tiles.length; x++) {
         for (let y = 0; y < tiles[x].length; y++) {
             tiles[x][y].show(ctx)
         }
     }
+    window.requestAnimationFrame(animate)
 }
