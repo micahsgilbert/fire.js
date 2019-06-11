@@ -21,11 +21,20 @@ const translate = {
 const allElems = [...colorElems, "tileWidth", "tileHeight", "noiseRes", "speed"]
 
 onConfigReady(() => {
+    document.getElementById("download").onclick = download
     for (var i of allElems) {
         document.getElementById(i).oninput = update("slider")
         document.getElementById(i + "-display").onkeyup = update("text")
     }
 })
+
+function download() {
+    var hiddenElement = document.createElement('a')
+    hiddenElement.href='data:attachment/text,' + encodeURI(JSON.stringify(config))
+    hiddenElement.target = "_blank"
+    hiddenElement.download = "fire.json"
+    hiddenElement.click()
+}
 
 function update(inputType) {
     return () => {
