@@ -7,7 +7,7 @@ Download and `npm install`. Build by running `npm run build`
 
 ## NPM scripts
 * Start a dev server: `npm run dev`.
-* Build the files into `dist/fire.js`: `npm run build`
+* Build the files into `build/fire.js`: `npm run build`
 
 ## JSON config
 `fire.json` should be kept in the same directory as `fire.js`. If that cannot be done, simply edit the `fetch` request in the `getConfig` method.
