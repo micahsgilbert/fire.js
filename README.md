@@ -22,7 +22,7 @@ Download and `npm install`. Build by running `npm run build`
 | speed | number | the speed at which the animation changes. Lower is faster. |
 
 ## What's "initial" and "multiplier"?
-The function for the r, g, and b values is `initial + noiseValue * multiplier`. `noiseValue` is always between 0 and 1, so this effectively means that the minimum value is `initial` and the maximum is `multiplier`.
+The function for the r, g, and b values is `initial + noiseValue * multiplier`. `noiseValue` is always between 0 and 1, so this effectively means that the minimum value is `initial` and the maximum is `multiplier + initial`.
 
 ## What if I want the size of the canvas to change?
 Import `updateDimensions` from `fire.js` and call it inside of your `onresize` event.
