@@ -3,10 +3,10 @@
 I started fire.js because I offered [my friend](https://github.com/jacksonelong) a new background for his website. I'm now working on it more often, and hopefully it could become an alternative to particles.js.
 
 ## Installation
-Download, and `npm install`. Build by running `npm run build`
+Download and `npm install`. Build by running `npm run build`
 
 ## NPM scripts
-* Start a dev server: `npm run dev`
+* Start a dev server: `npm run dev`.
 * Build the files into `dist/fire.js`: `npm run build`
 
 ## JSON config
@@ -22,7 +22,7 @@ Download, and `npm install`. Build by running `npm run build`
 | speed | number | the speed at which the animation changes. Lower is faster. |
 
 ## What's "initial" and "multiplier"?
-The function for the r, g, and b values is `initial + noiseValue * multiplier`. `noiseValue` is always between 0 and 1, so this effectively means that the minimum value is `initial` and the maximum is `multiplier`
+The function for the r, g, and b values is `initial + noiseValue * multiplier`. `noiseValue` is always between 0 and 1, so this effectively means that the minimum value is `initial` and the maximum is `multiplier`.
 
-## How do I make it look good?
-Edit `fire.json` as you please. Open `spectrumMaker.html` to see the resulting spectrum a set of color settings will provide.
+## What if I want the size of the canvas to change?
+Import `updateDimensions` from `fire.js` and call it inside of your `onresize` event.

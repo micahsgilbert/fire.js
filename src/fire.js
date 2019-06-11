@@ -1,8 +1,13 @@
 'use strict'
 
 import noise from './perlin.js'
-var config
+export var config
 var tiles = []
+
+var canvas
+var ctx
+
+var configReadyCallback = () => {}
 
 window.onload = (() => {
     let cached_onload = window.onload
@@ -14,7 +19,7 @@ window.onload = (() => {
     }
 })()
 
-function updateDimensions(canvas) {
+export function updateDimensions() {
     tiles = []
     for (let x = 0; x < canvas.width; x += config.tiles.width) {
         let row = []
@@ -26,6 +31,7 @@ function updateDimensions(canvas) {
 }
 
 function rgbToHex(rgb) {
+    rgb = Math.min(255, rgb)
     var hex = Number(rgb).toString(16).substr(0, 2);
     if (hex.length < 2) {
         hex = "0" + hex;
@@ -46,7 +52,7 @@ class Tile {
         this.y = y
         this.value = 0
     }
-    show(ctx) {
+    show() {
         ctx.fillStyle = getColor(getNoise(this.x, this.y, performance.now()))
         ctx.fillRect(this.x, this.y, config.tiles.width, config.tiles.height)
     }
@@ -56,26 +62,31 @@ function getNoise(x, y, t) {
     return 0.5 + (noise.perlin3(x/config.noiseResolution, y/config.noiseResolution, t/config.speed))/2
 }
 
-function getConfig(callback) {
+function fetchConfig(callback) {
     fetch("fire.json").then(res => {
         res.json().then((r) => {
             config = r
             callback()
+            configReadyCallback()
         })
     })
 }
 
+export function onConfigReady(fn) {
+    configReadyCallback = fn
+}
+
 function init() {
     noise.seed(Math.random())
-    getConfig(() => {
-        const canvas = document.getElementById(config.id)
-        const ctx = canvas.getContext('2d')
-        updateDimensions(canvas)
-        setInterval(main, 10, ctx)
+    fetchConfig(() => {
+        canvas = document.getElementById(config.id)
+        ctx = canvas.getContext('2d')
+        updateDimensions()
+        setInterval(main, 10)
     })
 }
 
-function main(ctx) {
+function main() {
     for (let x = 0; x < tiles.length; x++) {
         for (let y = 0; y < tiles[x].length; y++) {
             tiles[x][y].show(ctx)

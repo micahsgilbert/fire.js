@@ -3,7 +3,7 @@
   "version": "0.1.1",
   "description": "A JS background using HTML5 canvas",
   "scripts": {
-    "dev": "webpack-dev-server",
+    "dev": "webpack-dev-server --config webpack.dev.config.js",
     "build": "webpack --mode production --config webpack.config.js"
   },
   "repository": {
