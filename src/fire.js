@@ -59,7 +59,7 @@ function rgbToHex(rgb) {
 function getColor(val) {
     const r = val * config.colors.r.multiplier + config.colors.r.initial
     const g = val * config.colors.g.multiplier + config.colors.g.initial
-    const b = val * config.colors.g.multiplier + config.colors.b.initial
+    const b = val * config.colors.b.multiplier + config.colors.b.initial
     return `#${rgbToHex(r)}${rgbToHex(g)}${rgbToHex(b)}`
 }
 
