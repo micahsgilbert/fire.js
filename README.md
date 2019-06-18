@@ -3,7 +3,10 @@
 I started fire.js because I offered [my friend](https://github.com/jacksonelong) a new background for his website. I'm now working on it more often, and hopefully it could become an alternative to particles.js.
 
 ## Installation
-Download and `npm install`. Build by running `npm run build`
+Download and `npm install`. 
+Build by running `npm run build`
+Then, have a `<script src="fire.js"></script>` in your index.html.
+If you have scripts that override `window.onresize` or `window.onload` make sure to put them BEFORE fire.js. fire.js will add its code to those functions, not override them.
 
 ## NPM scripts
 * Start a dev server: `npm run dev`.
@@ -23,6 +26,3 @@ Download and `npm install`. Build by running `npm run build`
 
 ## What's "initial" and "multiplier"?
 The function for the r, g, and b values is `initial + noiseValue * multiplier`. `noiseValue` is always between 0 and 1, so this effectively means that the minimum value is `initial` and the maximum is `multiplier + initial`.
-
-## What if I want the size of the canvas to change?
-Import `updateDimensions` from `fire.js` and call it inside of your `onresize` event.
