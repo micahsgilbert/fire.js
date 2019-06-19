@@ -1,5 +1,5 @@
 {
-  "name": "fire.js",
+  "name": "@micahsgilbert/fire.js",
   "version": "0.1.1",
   "description": "A JS background using HTML5 canvas",
   "scripts": {
