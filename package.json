@@ -1,6 +1,6 @@
 {
   "name": "@micahsgilbert/fire.js",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "description": "A JS background using HTML5 canvas",
   "scripts": {
     "dev": "webpack-dev-server --config webpack.dev.config.js",

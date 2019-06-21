@@ -8,7 +8,7 @@ var canvas
 var parentDiv
 var ctx
 
-var configReadyCallback = () => {}
+var configReadyCallback = () => { }
 
 window.onload = (() => {
     let cached_onload = window.onload
@@ -29,14 +29,13 @@ window.onresize = (() => {
         }
     }
 })()
-
-export function handleSizeChange() {
+function handleSizeChange() {
     canvas.width = parentDiv.clientWidth
     canvas.height = parentDiv.clientHeight
     updateDimensions()
 }
 
-export function updateDimensions() {
+function updateDimensions() {
     tiles = []
     for (let x = 0; x < canvas.width; x += config.tiles.width) {
         let row = []
@@ -76,7 +75,7 @@ class Tile {
 }
 
 function getNoise(x, y, t) {
-    return 0.5 + (noise.perlin3(x/config.noiseResolution, y/config.noiseResolution, t/config.speed))/2
+    return 0.5 + (noise.perlin3(x / config.noiseResolution, y / config.noiseResolution, t / config.speed)) / 2
 }
 
 function fetchConfig(callback) {
@@ -87,10 +86,6 @@ function fetchConfig(callback) {
             configReadyCallback()
         })
     })
-}
-
-export function onConfigReady(fn) {
-    configReadyCallback = fn
 }
 
 function init() {
@@ -114,3 +109,5 @@ var animate = () => {
     }
     window.requestAnimationFrame(animate)
 }
+
+module.exports = { config }
