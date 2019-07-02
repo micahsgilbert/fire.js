@@ -52,7 +52,7 @@ function updateDimensions() {
 }
 
 function rgbToHex(rgb) {
-    rgb = Math.min(255, rgb)
+    rgb = Math.max(Math.min(255, rgb), 0)
     var hex = Number(rgb).toString(16).padStart(2, "0").substr(0, 2)
     if (hex.substr(1, 1) === ".") {
         hex = "0" + hex.substr(0, 1)

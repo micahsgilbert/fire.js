@@ -24,5 +24,8 @@ If you have scripts that override `window.onresize` or `window.onload` make sure
 | noiseResolution | number | how blocky or smooth the appearance is. Lower is blockier.
 | speed | number | the speed at which the animation changes. Lower is faster. |
 
+### The Gradient Directory
+This is something I threw together quickly to allow for a different way to configure fire.js. How it works is you select 2 colors and it will preview a gradient that fire.js will look like, and also provide the configuration needed to do it. It's not implemented with a fire preview, but it will in the future.
+
 ## What's "initial" and "multiplier"?
 The function for the r, g, and b values is `initial + noiseValue * multiplier`. `noiseValue` is always between 0 and 1, so this effectively means that the minimum value is `initial` and the maximum is `multiplier + initial`.
