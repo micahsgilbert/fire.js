@@ -29,10 +29,15 @@ window.onresize = (() => {
         }
     }
 })()
+
 function handleSizeChange() {
     canvas.width = parentDiv.clientWidth
     canvas.height = parentDiv.clientHeight
     updateDimensions()
+}
+
+function onConfigReady(fn) {
+    configReadyCallback = fn
 }
 
 function updateDimensions() {
@@ -48,9 +53,9 @@ function updateDimensions() {
 
 function rgbToHex(rgb) {
     rgb = Math.min(255, rgb)
-    var hex = Number(rgb).toString(16).substr(0, 2);
-    if (hex.length < 2) {
-        hex = "0" + hex;
+    var hex = Number(rgb).toString(16).padStart(2, "0").substr(0, 2)
+    if (hex.substr(1, 1) === ".") {
+        hex = "0" + hex.substr(0, 1)
     }
     return hex;
 }
@@ -110,4 +115,5 @@ var animate = () => {
     window.requestAnimationFrame(animate)
 }
 
-module.exports = { config }
+export default config
+export { onConfigReady, updateDimensions }
