@@ -1,6 +1,6 @@
 {
   "name": "@micahsgilbert/fire.js",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "A JS background using HTML5 canvas",
   "main": "src/fire.js",
   "scripts": {
